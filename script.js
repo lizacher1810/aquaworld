@@ -316,10 +316,14 @@
         params.append('chat_id', TG_CHAT);
         params.append('text', text);
         params.append('parse_mode', 'HTML');
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 12000);
         const res = await fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
           method: 'POST',
-          body: params
+          body: params,
+          signal: controller.signal
         });
+        clearTimeout(timer);
         if (res.ok) {
           form.reset();
           status.classList.add('is-ok');
