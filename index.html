@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=7" />
   <script type="module" src="assets/model-viewer.min.js"></script>
 </head>
 <body>
@@ -26,15 +26,13 @@
 
   <!-- Header -->
   <header class="header">
-    <a href="#" class="logo">лого</a>
+    <a href="#hero" class="logo"><img src="assets/logo.webp?v=7" alt="Aquaworld"></a>
     <nav class="nav" id="nav">
-      <a href="#">Каталог</a>
-      <a href="#">Коллекции</a>
-      <a href="#">О нас</a>
-      <a href="#">Афиша</a>
-      <a href="#">Сервис</a>
+      <a href="#services">Услуги</a>
+      <a href="#stage">Этапы</a>
+      <a href="#reveal">О нас</a>
     </nav>
-    <a href="tel:+79999999999" class="phone">+7 (999) 999-99-99</a>
+    <span class="phone">+7 (812) 336-14-08</span>
     <button class="burger" id="burger" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
@@ -42,12 +40,10 @@
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#">Каталог</a>
-    <a href="#">Коллекции</a>
-    <a href="#">О нас</a>
-    <a href="#">Афиша</a>
-    <a href="#">Сервис</a>
-    <a href="tel:+79999999999" class="mobile-menu__phone">+7 (999) 999-99-99</a>
+    <a href="#services">Услуги</a>
+    <a href="#stage">Этапы</a>
+    <a href="#reveal">О нас</a>
+    <span class="mobile-menu__phone">+7 (812) 336-14-08</span>
   </div>
 
   <!-- Hero: scroll-driven frame sequence -->
@@ -286,15 +282,8 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
-      <a href="#" class="footer__brand">лого</a>
-      <nav class="footer__nav">
-        <a href="#">Каталог</a>
-        <a href="#">Коллекции</a>
-        <a href="#">О нас</a>
-        <a href="#">Афиша</a>
-        <a href="#">Сервис</a>
-      </nav>
-      <a href="tel:+79999999999" class="footer__phone">+7 (999) 999-99-99</a>
+      <a href="#hero" class="footer__brand"><img src="assets/logo.webp?v=7" alt="Aquaworld"></a>
+      <span class="footer__phone">+7 (812) 336-14-08</span>
     </div>
     <div class="footer__bottom">
       <span>© 2026 Aquaworld</span>
@@ -302,6 +291,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>

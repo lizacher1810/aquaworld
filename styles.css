@@ -50,8 +50,9 @@ a{ color:inherit; text-decoration:none; }
 }
 .header.hidden{ opacity:0; pointer-events:none; }
 .logo{
-  font-weight:700; font-size:22px; letter-spacing:.02em;
+  display:flex; align-items:center;
 }
+.logo img{ height:34px; width:auto; display:block; }
 .nav{
   position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
   display:flex; gap:clamp(20px, 2.5vw, 42px);
@@ -622,7 +623,7 @@ a{ color:inherit; text-decoration:none; }
 
 /* ---------- Footer ---------- */
 .footer{
-  background:#070b11; color:rgba(255,255,255,.85);
+  background:#0D253C; color:rgba(255,255,255,.85);
   padding:clamp(40px,5vw,64px) var(--pad) 28px;
 }
 .footer__inner{
@@ -630,10 +631,8 @@ a{ color:inherit; text-decoration:none; }
   flex-wrap:wrap; gap:20px;
   padding-bottom:26px; border-bottom:1px solid rgba(255,255,255,.10);
 }
-.footer__brand{ font-weight:700; font-size:22px; color:#fff; }
-.footer__nav{ display:flex; gap:clamp(18px,2.4vw,40px); flex-wrap:wrap; }
-.footer__nav a{ font-size:16px; opacity:.85; transition:opacity .2s var(--ease); }
-.footer__nav a:hover{ opacity:.55; }
+.footer__brand{ display:flex; align-items:center; }
+.footer__brand img{ height:30px; width:auto; display:block; }
 .footer__phone{ font-weight:700; font-size:16px; color:#fff; }
 .footer__bottom{
   margin-top:22px;
