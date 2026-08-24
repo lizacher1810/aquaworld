@@ -5,7 +5,7 @@
   const FRAME_COUNT = 122;          // number of files in /seq
   const FRAME_PATH  = (i) => `seq/f${String(i + 1).padStart(4, '0')}.webp`;
   const PARALLEL    = 8;            // parallel preload streams
-  const READY_AT    = 90;          // show site after this many frames loaded
+  const READY_AT    = 28;          // show site after this many frames loaded (rest stream in)
   const SMOOTH      = 0.12;        // scroll smoothing (lerp factor)
 
   // ---------- DOM ----------
@@ -321,9 +321,8 @@
           status.classList.add('is-ok');
           status.textContent = 'Спасибо! Мы свяжемся с вами.';
         } else {
-          const info = await res.text().catch(() => '');
           status.classList.add('is-error');
-          status.textContent = 'Не удалось отправить (' + res.status + '). ' + info.slice(0, 160);
+          status.textContent = 'Не удалось отправить. Попробуйте позже.';
         }
       } catch (err) {
         status.classList.add('is-error');
@@ -340,6 +339,27 @@
       const tryPlay = () => { const p = vid.play(); if (p) p.catch(() => {}); };
       tryPlay();
       document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
+    }
+  })();
+
+  // ---------- Lazy-load the 3D model-viewer library only near the coral stage ----------
+  (function lazyModelViewer() {
+    if (!stageEl) return;
+    const load = () => {
+      if (document.querySelector('script[data-mv]')) return;
+      const s = document.createElement('script');
+      s.type = 'module';
+      s.src = 'assets/model-viewer.min.js';
+      s.setAttribute('data-mv', '');
+      document.head.appendChild(s);
+    };
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) { load(); io.disconnect(); }
+      }, { rootMargin: '800px' });
+      io.observe(stageEl);
+    } else {
+      load();
     }
   })();
 

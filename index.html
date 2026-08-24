@@ -11,8 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=16" />
-  <script type="module" src="assets/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="styles.css?v=17" />
 </head>
 <body>
 
@@ -214,7 +213,7 @@
         disable-zoom disable-pan disable-tap
         environment-image="neutral"
         exposure="1.1" shadow-intensity="0"
-        loading="eager"></model-viewer>
+        loading="lazy" reveal="auto"></model-viewer>
 
       <div class="stage__plate stage__plate--tl">
         <h3>Дизайн</h3>
@@ -263,7 +262,7 @@
 
   <!-- Screen 5: contact form over looping video -->
   <section class="formsec" id="contact">
-    <video class="formsec__video" autoplay muted loop playsinline preload="auto"
+    <video class="formsec__video" autoplay muted loop playsinline preload="none"
            poster="assets/aquarium-poster.webp">
       <source src="assets/aquarium-loop.mp4" type="video/mp4">
     </video>
@@ -304,6 +303,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=16"></script>
+  <script src="script.js?v=17"></script>
 </body>
 </html>
