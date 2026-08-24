@@ -272,12 +272,18 @@
     walk(document.body);
   })();
 
-  // ---------- Contact form ----------
+  // ---------- Contact form → Telegram ----------
   (function contactForm() {
+    const TG_TOKEN = '8668001294:AAHPQrAAiSYQg3CpzC4x2BE6u78V_yCqPwY';
+    const TG_CHAT  = '771843490';   // ← сюда впишется chat_id
+
     const form = document.getElementById('cform');
     if (!form) return;
     const status = document.getElementById('cformStatus');
     const btn = form.querySelector('.cform__btn');
+
+    const esc = (s) => String(s || '').replace(/[<>&]/g,
+      (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -294,21 +300,21 @@
         return;
       }
 
-      const endpoint = form.dataset.endpoint;
-      if (!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1) {
-        status.classList.add('is-error');
-        status.textContent = 'Форма пока не подключена к сервису отправки.';
-        return;
-      }
+      const data = new FormData(form);
+      const text =
+        '🐠 <b>Новая заявка — Aquaworld</b>\n\n' +
+        '👤 Имя: ' + esc(data.get('name')) + '\n' +
+        '📞 Телефон: ' + esc(data.get('phone')) + '\n' +
+        '✉️ Почта: ' + esc(data.get('email'));
 
       btn.disabled = true;
       const orig = btn.textContent;
       btn.textContent = 'Отправляем…';
       try {
-        const res = await fetch(endpoint, {
+        const res = await fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
           method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' })
         });
         if (res.ok) {
           form.reset();
