@@ -321,8 +321,9 @@
           status.classList.add('is-ok');
           status.textContent = 'Спасибо! Мы свяжемся с вами.';
         } else {
+          const info = await res.text().catch(() => '');
           status.classList.add('is-error');
-          status.textContent = 'Не удалось отправить. Попробуйте позже.';
+          status.textContent = 'Не удалось отправить (' + res.status + '). ' + info.slice(0, 160);
         }
       } catch (err) {
         status.classList.add('is-error');
