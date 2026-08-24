@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aquaworld — аквариум под ключ</title>
+  <meta name="description" content="Aquaworld — аквариум под ключ: от идеи и дизайна до живой экосистемы, которая работает сама." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="assets/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__inner">
+      <div class="preloader__label">Aquaworld</div>
+      <div class="preloader__bar"><span id="preloaderFill"></span></div>
+      <div class="preloader__pct" id="preloaderPct">0%</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="logo">лого</a>
+    <nav class="nav" id="nav">
+      <a href="#">Каталог</a>
+      <a href="#">Коллекции</a>
+      <a href="#">О нас</a>
+      <a href="#">Афиша</a>
+      <a href="#">Сервис</a>
+    </nav>
+    <a href="tel:+79999999999" class="phone">+7 (999) 999-99-99</a>
+    <button class="burger" id="burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Каталог</a>
+    <a href="#">Коллекции</a>
+    <a href="#">О нас</a>
+    <a href="#">Афиша</a>
+    <a href="#">Сервис</a>
+    <a href="tel:+79999999999" class="mobile-menu__phone">+7 (999) 999-99-99</a>
+  </div>
+
+  <!-- Hero: scroll-driven frame sequence -->
+  <section class="hero" id="hero">
+    <div class="hero__sticky">
+      <canvas class="hero__canvas" id="canvas"></canvas>
+      <div class="hero__veil"></div>
+
+      <div class="hero__center" id="center">
+        <h1 class="hero__title" id="title">Aquaworld</h1>
+        <p class="hero__lead" id="lead">
+          Аквариум под ключ — от идеи и дизайна до живой экосистемы,
+          которая работает сама. Вы получаете не аквариум, а часть дома,
+          куда приятно просто смотреть.
+        </p>
+      </div>
+
+      <div class="hero__cards" id="cards">
+        <article class="card">
+          <h3>Гарантия на экосистему</h3>
+          <p>Мы отвечаем не только за монтаж, но и за то, что аквариум действительно заработает.</p>
+        </article>
+        <article class="card">
+          <h3>Индивидуальный проект</h3>
+          <p>Каждый аквариум проектируем под конкретное пространство, свет и стиль интерьера с нуля.</p>
+        </article>
+        <article class="card">
+          <h3>Работаем с живыми организмами бережно</h3>
+          <p>Заселяем рыб и растения постепенно, с учётом адаптации, так экосистема остаётся здоровой.</p>
+        </article>
+      </div>
+
+      <div class="hero__progress"><span id="progressFill"></span></div>
+    </div>
+  </section>
+
+  <!-- Screen 2: Services -->
+  <section class="services" id="services">
+    <div class="services__head">
+      <h2 class="services__title">Наши услуги</h2>
+      <p class="services__sub">От первого эскиза до аквариума, который живёт сам — берём на себя любой этап или весь проект целиком</p>
+    </div>
+
+    <div class="services__viewport">
+      <div class="services__row" id="servicesRow">
+
+        <article class="scard">
+          <img class="scard__bg" src="services/1.webp" alt="Аквариум под ключ" loading="lazy">
+          <div class="scard__shade"></div>
+          <span class="scard__vtitle">Аквариум под ключ</span>
+          <div class="scard__panel">
+            <div class="scard__inner">
+              <h3 class="scard__title">Аквариум под ключ</h3>
+              <p class="scard__desc">Полный цикл: от дизайна и подбора аквариума до запуска живой экосистемы. Вы получаете готовый результат — без необходимости разбираться в деталях самостоятельно.</p>
+              <div class="scard__foot">
+                <button class="scard__btn" type="button">Оставить заявку</button>
+              </div>
+            </div>
+            <img class="scard__thumb" src="services/1.webp" alt="" loading="lazy">
+          </div>
+        </article>
+
+        <article class="scard">
+          <img class="scard__bg" src="services/2.webp" alt="Оформление существующего аквариума" loading="lazy">
+          <div class="scard__shade"></div>
+          <span class="scard__vtitle">Оформление существующего аквариума</span>
+          <div class="scard__panel">
+            <div class="scard__inner">
+              <h3 class="scard__title">Оформление существующего аквариума</h3>
+              <p class="scard__desc">Обновим декор, растения и композицию в аквариуме, который у вас уже есть — без демонтажа и переезда рыб, аккуратно и поэтапно.</p>
+              <div class="scard__foot">
+                <button class="scard__btn" type="button">Оставить заявку</button>
+              </div>
+            </div>
+            <img class="scard__thumb" src="services/2.webp" alt="" loading="lazy">
+          </div>
+        </article>
+
+        <article class="scard">
+          <img class="scard__bg" src="services/3.webp" alt="Подбор и заселение рыб" loading="lazy">
+          <div class="scard__shade"></div>
+          <span class="scard__vtitle">Подбор и заселение рыб</span>
+          <div class="scard__panel">
+            <div class="scard__inner">
+              <h3 class="scard__title">Подбор и заселение рыб</h3>
+              <p class="scard__desc">Поможем выбрать обитателей под размер, объём и условия вашего аквариума — с учётом совместимости видов и того, кто вам действительно нравится.</p>
+              <div class="scard__foot">
+                <button class="scard__btn" type="button">Оставить заявку</button>
+              </div>
+            </div>
+            <img class="scard__thumb" src="services/3.webp" alt="" loading="lazy">
+          </div>
+        </article>
+
+        <article class="scard">
+          <img class="scard__bg" src="services/4.webp" alt="Морские аквариумы и рифы" loading="lazy">
+          <div class="scard__shade"></div>
+          <span class="scard__vtitle">Морские аквариумы и рифы</span>
+          <div class="scard__panel">
+            <div class="scard__inner">
+              <h3 class="scard__title">Морские аквариумы и рифы</h3>
+              <p class="scard__desc">Создаём и запускаем морские системы — от кораллового рифа до аквариума с редкими морскими обитателями, требующего особого баланса.</p>
+              <div class="scard__foot">
+                <button class="scard__btn" type="button">Оставить заявку</button>
+              </div>
+            </div>
+            <img class="scard__thumb" src="services/4.webp" alt="" loading="lazy">
+          </div>
+        </article>
+
+        <article class="scard">
+          <img class="scard__bg" src="services/5.webp" alt="Обслуживание и уход" loading="lazy">
+          <div class="scard__shade"></div>
+          <span class="scard__vtitle">Обслуживание и уход</span>
+          <div class="scard__panel">
+            <div class="scard__inner">
+              <h3 class="scard__title">Обслуживание и уход</h3>
+              <p class="scard__desc">Берём на себя регулярную заботу об аквариуме — чистку, замену воды, контроль параметров и здоровья обитателей — по графику, без вашего участия.</p>
+              <div class="scard__foot">
+                <button class="scard__btn" type="button">Оставить заявку</button>
+              </div>
+            </div>
+            <img class="scard__thumb" src="services/5.webp" alt="" loading="lazy">
+          </div>
+        </article>
+
+        <article class="scard">
+          <img class="scard__bg" src="services/6.webp" alt="Консультация и дизайн-проект" loading="lazy">
+          <div class="scard__shade"></div>
+          <span class="scard__vtitle">Консультация и дизайн-проект</span>
+          <div class="scard__panel">
+            <div class="scard__inner">
+              <h3 class="scard__title">Консультация и дизайн-проект</h3>
+              <p class="scard__desc">Если хотите разобраться сами или только выбираете концепцию — поможем с планировкой, подбором оборудования и визуализацией будущего аквариума.</p>
+              <div class="scard__foot">
+                <button class="scard__btn" type="button">Оставить заявку</button>
+              </div>
+            </div>
+            <img class="scard__thumb" src="services/6.webp" alt="" loading="lazy">
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Screen 3: From sketch to living water (3D coral) -->
+  <section class="stage" id="stage">
+    <div class="stage__sticky">
+      <h2 class="stage__title">От эскиза<br>до живой воды</h2>
+
+      <model-viewer
+        class="stage__model" id="coral"
+        src="assets/coral.glb"
+        camera-orbit="0deg 78deg 170%"
+        interaction-prompt="none"
+        disable-zoom disable-pan disable-tap
+        environment-image="neutral"
+        exposure="1.1" shadow-intensity="0"
+        loading="eager"></model-viewer>
+
+      <div class="stage__plate stage__plate--tl">
+        <h3>Дизайн</h3>
+        <p>Продумываем композицию, свет и растения под ваш интерьер — аквариум становится частью пространства, а не предметом мебели.</p>
+      </div>
+      <div class="stage__plate stage__plate--tr">
+        <h3>Запуск экосистемы</h3>
+        <p>Высаживаем растения, заселяем рыб постепенно, даём воде и биобалансу стабилизироваться — без стресса для живых обитателей.</p>
+      </div>
+      <div class="stage__plate stage__plate--bl">
+        <h3>Монтаж</h3>
+        <p>Собираем и запускаем систему: фильтрация, свет, CO2, грунт и декор — всё подобрано под конкретный проект, а не «как получится».</p>
+      </div>
+      <div class="stage__plate stage__plate--br">
+        <h3>Сопровождение</h3>
+        <p>Обслуживаем аквариум и после запуска — вы наслаждаетесь видом, мы следим, чтобы мир внутри жил правильно.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screen 4: pinned text + stacking image rows -->
+  <section class="reveal" id="reveal">
+    <div class="reveal__inner">
+      <div class="reveal__text">
+        <h2 class="reveal__title">Аквариум, который не требует от вас быть аквариумистом</h2>
+        <p class="reveal__p">Многие боятся аквариума именно из-за ухода — кажется, что это сложно, и одна ошибка погубит всё. Мы берём эту часть на себя.</p>
+        <p class="reveal__p">Каждый проект начинается с индивидуального дизайна: мы учитываем размер и освещённость комнаты, стиль интерьера, ваши пожелания по обитателям — от спокойных травников до ярких морских рифов. Дальше — инженерная часть: подбираем оборудование, которое держит баланс воды без постоянного вмешательства, продумываем свет для роста растений и здоровья рыб.</p>
+      </div>
+
+      <div class="reveal__grid">
+        <div class="reveal__row reveal__row--1">
+          <img src="gallery/1.webp" alt="" loading="lazy">
+          <img src="gallery/2.webp" alt="" loading="lazy">
+        </div>
+        <div class="reveal__row reveal__row--2">
+          <img src="gallery/3.webp" alt="" loading="lazy">
+          <img src="gallery/4.webp" alt="" loading="lazy">
+        </div>
+        <div class="reveal__row reveal__row--3">
+          <img src="gallery/5.webp" alt="" loading="lazy">
+          <img src="gallery/6.webp" alt="" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screen 5: contact form over looping video -->
+  <section class="formsec" id="contact">
+    <video class="formsec__video" autoplay muted loop playsinline preload="auto"
+           poster="assets/aquarium-poster.webp">
+      <source src="assets/aquarium-loop.mp4" type="video/mp4">
+    </video>
+    <div class="formsec__veil"></div>
+
+    <div class="formsec__content">
+      <h2 class="formsec__title">Обсудим ваш<br>подводный мир</h2>
+      <p class="formsec__sub">Расскажите немного о пространстве — предложим концепцию и рассчитаем стоимость.</p>
+
+      <form class="cform" id="cform" data-endpoint="https://formspree.io/f/YOUR_FORM_ID" novalidate>
+        <div class="cform__row">
+          <input class="cform__input" type="text"  name="name"  placeholder="Имя" required>
+          <input class="cform__input" type="tel"   name="phone" placeholder="Телефон" required>
+          <input class="cform__input" type="email" name="email" placeholder="Почта" required>
+          <button class="cform__btn" type="submit">Отправить</button>
+        </div>
+        <label class="cform__agree">
+          <input type="checkbox" name="agree" required>
+          <span class="cform__box" aria-hidden="true"></span>
+          <span>Я соглашаюсь на обработку персональных данных</span>
+        </label>
+        <p class="cform__status" id="cformStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <a href="#" class="footer__brand">лого</a>
+      <nav class="footer__nav">
+        <a href="#">Каталог</a>
+        <a href="#">Коллекции</a>
+        <a href="#">О нас</a>
+        <a href="#">Афиша</a>
+        <a href="#">Сервис</a>
+      </nav>
+      <a href="tel:+79999999999" class="footer__phone">+7 (999) 999-99-99</a>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Aquaworld</span>
+      <a href="#">Политика конфиденциальности</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
