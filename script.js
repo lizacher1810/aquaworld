@@ -311,10 +311,14 @@
       const orig = btn.textContent;
       btn.textContent = 'Отправляем…';
       try {
+        // form-encoded body avoids a CORS preflight (Safari fails the OPTIONS otherwise)
+        const params = new URLSearchParams();
+        params.append('chat_id', TG_CHAT);
+        params.append('text', text);
+        params.append('parse_mode', 'HTML');
         const res = await fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' })
+          body: params
         });
         if (res.ok) {
           form.reset();
