@@ -569,13 +569,15 @@ a{ color:inherit; text-decoration:none; }
   text-shadow:0 2px 18px rgba(0,0,0,.35);
 }
 
-.cform{ margin-top:clamp(30px,4vw,52px); }
+.cform{
+  max-width:900px; margin:clamp(30px,4vw,52px) auto 0;   /* fixed form width so edges line up */
+}
 .cform__row{
   display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
 }
 .cform__input{
   -webkit-appearance:none; appearance:none;   /* stop iOS from forcing its own field height */
-  flex:1 1 0; min-width:0; max-width:280px;
+  flex:1 1 0; min-width:0;
   height:60px; padding:0 22px;
   font-family:inherit; font-size:16px; color:#fff;
   background:rgba(255,255,255,.10);
