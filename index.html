@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=9" />
   <script type="module" src="assets/model-viewer.min.js"></script>
 </head>
 <body>
@@ -268,12 +268,14 @@
           <input class="cform__input" type="tel"   name="phone" placeholder="Телефон" required>
           <input class="cform__input" type="email" name="email" placeholder="Почта" required>
         </div>
-        <label class="cform__agree">
-          <input type="checkbox" name="agree" required>
-          <span class="cform__box" aria-hidden="true"></span>
-          <span>Я соглашаюсь на обработку персональных данных</span>
-        </label>
-        <button class="cform__btn" type="submit">Отправить</button>
+        <div class="cform__foot">
+          <label class="cform__agree">
+            <input type="checkbox" name="agree" required>
+            <span class="cform__box" aria-hidden="true"></span>
+            <span>Я соглашаюсь на обработку персональных данных</span>
+          </label>
+          <button class="cform__btn" type="submit">Отправить</button>
+        </div>
         <p class="cform__status" id="cformStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -291,6 +293,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>

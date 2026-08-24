@@ -489,7 +489,7 @@ a{ color:inherit; text-decoration:none; }
   padding:0 var(--pad);
 }
 .reveal__text{
-  position:sticky; top:40px;
+  position:sticky; top:96px;
   flex:1 1 auto; min-width:0; max-width:none;
   align-self:flex-start;
 }
@@ -510,7 +510,7 @@ a{ color:inherit; text-decoration:none; }
   gap:24px;
 }
 .reveal__row{
-  position:sticky; top:40px;
+  position:sticky; top:96px;
   display:grid; grid-template-columns:1fr 1fr; gap:20px;
   background:#ffffff;             /* fully occlude the row beneath */
   padding-bottom:24px;            /* covers the flow gap when stacked */
@@ -531,7 +531,7 @@ a{ color:inherit; text-decoration:none; }
   .reveal__text{ position:static; flex:none; max-width:none; }
   .reveal__p{ max-width:none; }
   .reveal__grid{ flex:none; width:100%; gap:16px; }
-  .reveal__row{ top:70px; gap:12px; padding-bottom:16px; margin-bottom:-16px; }
+  .reveal__row{ top:82px; gap:12px; padding-bottom:16px; margin-bottom:-16px; }
 }
 
 /* ---------- Screen 5: contact form over looping video ---------- */
@@ -589,7 +589,7 @@ a{ color:inherit; text-decoration:none; }
 .cform__input:invalid:not(:placeholder-shown){ border-color:rgba(255,140,140,.9); }
 .cform__btn{
   -webkit-appearance:none; appearance:none;
-  flex:0 0 auto; height:60px; margin-top:18px; padding:0 40px;
+  flex:0 0 auto; height:60px; padding:0 40px;
   font-family:inherit; font-size:16px; font-weight:600; color:#fff;
   background:#17324e; border:none; border-radius:12px; cursor:pointer;
   transition:background .25s var(--ease);
@@ -597,9 +597,15 @@ a{ color:inherit; text-decoration:none; }
 .cform__btn:hover{ background:#1e4166; }
 .cform__btn:disabled{ opacity:.6; cursor:default; }
 
+/* checkbox pinned left, submit pinned right */
+.cform__foot{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:24px; margin-top:22px;
+}
+
 .cform__agree{
   display:inline-flex; align-items:center; gap:12px;
-  margin-top:18px; cursor:pointer;
+  cursor:pointer;
   font-size:16px; color:rgba(255,255,255,.9);
   text-shadow:0 2px 14px rgba(0,0,0,.35);
 }
@@ -656,7 +662,8 @@ a{ color:inherit; text-decoration:none; }
   .cform{ display:flex; flex-direction:column; }
   .cform__row{ flex-direction:column; align-items:stretch; }
   .cform__input{ flex:none; max-width:none; width:100%; height:45px; }
+  .cform__foot{ flex-direction:column; align-items:stretch; gap:16px; }
   .cform__btn{ flex:none; width:100%; height:50px; }
-  .cform__agree{ margin:18px 0 0; align-items:flex-start; text-align:left; }
+  .cform__agree{ align-items:flex-start; text-align:left; }
   .footer__inner{ flex-direction:column; align-items:flex-start; }
 }
