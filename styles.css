@@ -580,7 +580,7 @@ a{ color:inherit; text-decoration:none; }
 .cform__input:invalid:not(:placeholder-shown){ border-color:rgba(255,140,140,.9); }
 .cform__btn{
   -webkit-appearance:none; appearance:none;
-  flex:0 0 auto; height:60px; padding:0 40px;
+  flex:0 0 auto; height:60px; margin-top:18px; padding:0 40px;
   font-family:inherit; font-size:16px; font-weight:600; color:#fff;
   background:#17324e; border:none; border-radius:12px; cursor:pointer;
   transition:background .25s var(--ease);
@@ -650,6 +650,6 @@ a{ color:inherit; text-decoration:none; }
   .cform__row{ flex-direction:column; align-items:stretch; }
   .cform__input{ flex:none; max-width:none; width:100%; height:45px; }
   .cform__btn{ flex:none; width:100%; height:50px; }
-  .cform__agree{ order:-1; margin:0 0 16px; align-items:flex-start; text-align:left; }
+  .cform__agree{ margin:18px 0 0; align-items:flex-start; text-align:left; }
   .footer__inner{ flex-direction:column; align-items:flex-start; }
 }
