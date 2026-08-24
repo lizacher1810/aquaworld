@@ -153,8 +153,8 @@
     const scrolled = clamp(-rect.top, 0, total);
     targetP = total > 0 ? scrolled / total : 0;
 
-    // header belongs to the hero only — hide it once the hero has scrolled away
-    if (header) header.classList.toggle('hidden', window.scrollY > total - 20);
+    // once the hero has scrolled away the header stays pinned as a solid menu bar
+    if (header) header.classList.toggle('header--solid', window.scrollY > total - 20);
 
     if (stageEl && !stageMobile.matches) {
       const r = stageEl.getBoundingClientRect();

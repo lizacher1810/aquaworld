@@ -6,7 +6,10 @@
 
 *{ margin:0; padding:0; box-sizing:border-box; }
 
-html{ scroll-behavior:auto; }
+html{ scroll-behavior:smooth; }
+
+/* anchored sections clear the fixed menu bar when jumped to */
+#services, #stage, #reveal, #contact{ scroll-margin-top:76px; }
 
 body{
   font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -46,9 +49,14 @@ a{ color:inherit; text-decoration:none; }
   position:fixed; top:0; left:0; width:100%; z-index:50;
   display:flex; align-items:center; justify-content:space-between;
   padding:26px var(--pad);
-  transition:opacity .3s var(--ease);
+  transition:background .3s var(--ease), padding .3s var(--ease);
 }
-.header.hidden{ opacity:0; pointer-events:none; }
+/* after the hero the bar becomes a pinned solid menu (footer colour) */
+.header--solid{
+  background:#0D253C;
+  padding-top:15px; padding-bottom:15px;
+  box-shadow:0 6px 24px rgba(0,0,0,.22);
+}
 .logo{
   display:flex; align-items:center;
 }
