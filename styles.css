@@ -292,6 +292,19 @@ a{ color:inherit; text-decoration:none; }
   width:150px; height:120px; object-fit:cover;
   border-radius:12px;
 }
+/* round arrow toggle — mobile only (desktop expands on hover) */
+.scard__arrow{
+  display:none;
+  position:absolute; z-index:3;
+  right:20px; top:154px;            /* bottom-right corner of the 230px photo header */
+  width:56px; height:56px; border-radius:50%;
+  background:#17324e; color:#fff;
+  align-items:center; justify-content:center;
+  border:none; cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.28);
+  transition:transform .3s var(--ease);
+}
+.scard__arrow svg{ width:22px; height:22px; }
 
 /* hover expand (desktop / pointer devices) */
 @media (hover:hover) and (min-width:861px){
@@ -357,44 +370,63 @@ a{ color:inherit; text-decoration:none; }
 
 /* ---------- Mobile ---------- */
 @media (max-width: 860px){
-  /* stage → stacked */
+  /* stage → stacked; the coral sits large BEHIND the frosted plates */
   .stage{ height:auto; }
-  .stage__sticky{ position:static; height:auto; overflow:visible; padding:80px 0 60px; }
-  .stage__title{ position:static; padding:0 var(--pad); margin-bottom:24px; }
+  .stage__sticky{ position:relative; height:auto; overflow:hidden; padding:60px 0 0; }
+  .stage__title{ position:relative; z-index:2; padding:0 var(--pad); margin-bottom:24px; }
   .stage__model{
-    position:relative; left:auto; top:auto; transform:none;
-    width:100%; height:46vh; margin-bottom:8px;
+    position:absolute; left:50%; top:52%;
+    transform:translate(-50%,-50%);
+    width:150%; height:80vh; margin:0; z-index:0;
+    pointer-events:none;
   }
   .stage__plate{
-    position:static; width:auto; transform:none !important;
+    position:relative; z-index:2; width:auto; transform:none !important;
     margin:12px var(--pad) 0;
   }
 }
 
 @media (max-width: 860px){
-  /* services → vertical stacked cards */
+  /* services → full-width photo cards; tap the arrow to expand (accordion) */
+  .services{ padding-top:60px; }   /* 60px from hero to "Наши услуги" */
   .services__viewport{ overflow:visible; }
   .services__row{ flex-direction:column; gap:16px; transform:none !important; }
   .scard{
-    flex:none; width:100%; height:auto; cursor:default;
-    display:flex; flex-direction:column;
-    background:#0a2236;
+    flex:none; width:100%; height:auto; cursor:pointer;
+    display:block; background:#0a2236;
   }
-  .scard__bg{ position:relative; width:100%; height:190px; }
-  .scard__shade, .scard__vtitle{ display:none; }
+  /* photo header */
+  .scard__bg{ position:relative; width:100%; height:230px; }
+  .scard__shade{
+    display:block; inset:0 0 auto 0; height:230px;
+  }
+  .scard__vtitle{
+    display:flex; writing-mode:horizontal-tb; transform:none;
+    inset:0 74px auto 0; height:230px;
+    padding:24px; align-items:flex-start; justify-content:flex-start;
+    font-size:26px; line-height:1.2;
+  }
+  .scard__arrow{ display:flex; }
+  /* accordion body */
   .scard__panel{
     position:relative; inset:auto; width:100%; height:auto;
-    opacity:1; pointer-events:auto;
-    padding:24px 24px 26px;
+    max-height:0; padding:0 24px; opacity:1; overflow:hidden;
+    pointer-events:auto;
+    transition:max-height .4s var(--ease), padding .4s var(--ease);
   }
   .scard__inner{ width:100%; height:auto; }
   .scard__desc{ max-width:none; }
   .scard__foot{ margin-top:22px; }
   .scard__thumb{ display:none; }
-  .scard__title{ font-size:22px; }
+  .scard__title{ display:none; }   /* title already shown on the photo header */
+
+  .scard.is-open .scard__panel{ max-height:640px; padding:24px; }
+  .scard.is-open .scard__arrow{ transform:rotate(90deg); }
 }
 
 @media (max-width: 860px){
+  :root{ --pad:10px; }            /* narrow side gaps → content near full-width */
+
   .nav{ display:none; }
   .phone{ display:none; }
   .burger{ display:flex; }
@@ -404,18 +436,7 @@ a{ color:inherit; text-decoration:none; }
   .hero__center{ top:44%; }
   .hero__lead{ max-width:340px; margin-top:18px; }
 
-  .hero__cards{
-    grid-template-columns:none;
-    grid-auto-flow:column;
-    grid-auto-columns:78%;
-    gap:12px;
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch;
-    padding-bottom:26px;
-  }
-  .hero__cards::-webkit-scrollbar{ display:none; }
-  .card{ scroll-snap-align:center; padding:18px 20px; }
+  .hero__cards{ display:none; }   /* advantage cards removed on mobile */
 }
 
 @media (max-width: 420px){
@@ -483,6 +504,7 @@ a{ color:inherit; text-decoration:none; }
 
 /* Mobile: same stacking effect, single column layout */
 @media (max-width: 860px){
+  .reveal{ padding:50px 0 0; }     /* 50px from last plate to "Аквариум…" title */
   .reveal__inner{ flex-direction:column; gap:28px; }
   .reveal__text{ position:static; flex:none; max-width:none; }
   .reveal__p{ max-width:none; }
@@ -608,9 +630,10 @@ a{ color:inherit; text-decoration:none; }
 
 /* Mobile */
 @media (max-width: 860px){
+  .formsec{ padding-top:60px; }     /* 60px from last photos to the form block */
   .cform__row{ flex-direction:column; align-items:stretch; }
-  .cform__input{ max-width:none; width:100%; }
-  .cform__btn{ width:100%; }
+  .cform__input{ max-width:none; width:100%; height:45px; }
+  .cform__btn{ width:100%; height:45px; }
   .cform__agree{ align-items:flex-start; text-align:left; }
   .footer__inner{ flex-direction:column; align-items:flex-start; }
 }

@@ -213,6 +213,23 @@
     requestAnimationFrame(render);
   }
 
+  // ---------- Services cards: tap the arrow to expand (mobile) ----------
+  (function servicesExpand() {
+    const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg>';
+    document.querySelectorAll('.scard').forEach((card) => {
+      const arrow = document.createElement('span');
+      arrow.className = 'scard__arrow';
+      arrow.setAttribute('aria-hidden', 'true');
+      arrow.innerHTML = ARROW;
+      card.appendChild(arrow);
+      card.addEventListener('click', (e) => {
+        if (!window.matchMedia('(max-width: 860px)').matches) return;
+        if (e.target.closest('.scard__btn')) return;   // let the CTA work
+        card.classList.toggle('is-open');
+      });
+    });
+  })();
+
   // ---------- Mobile menu ----------
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobileMenu');
