@@ -386,6 +386,12 @@ a{ color:inherit; text-decoration:none; }
     transform:none !important;
     margin:12px var(--pad) 0;
   }
+  /* fade the coral into white at the bottom → no hard cut into the next block */
+  .stage__sticky::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:140px;
+    background:linear-gradient(to bottom, rgba(255,255,255,0), #ffffff);
+    z-index:1; pointer-events:none;
+  }
 }
 
 @media (max-width: 860px){
@@ -404,11 +410,12 @@ a{ color:inherit; text-decoration:none; }
   }
   .scard__vtitle{
     display:flex; writing-mode:horizontal-tb; transform:none;
-    inset:0 66px auto 0; height:130px;
-    padding:20px; align-items:center; justify-content:flex-start;
+    inset:0 78px auto 0; height:130px;
+    padding:20px; align-items:flex-start; justify-content:flex-start;
     font-size:22px; line-height:1.15;
   }
-  .scard__arrow{ display:flex; width:48px; height:48px; top:41px; right:16px; }
+  /* arrow pinned to the bottom-right of the 130px photo header, 20px insets */
+  .scard__arrow{ display:flex; width:48px; height:48px; top:62px; right:20px; }
   /* accordion body */
   .scard__panel{
     position:relative; inset:auto; width:100%; height:auto;
@@ -633,9 +640,10 @@ a{ color:inherit; text-decoration:none; }
 /* Mobile */
 @media (max-width: 860px){
   .formsec{ padding:56px var(--pad); }
+  .cform{ display:flex; flex-direction:column; }
   .cform__row{ flex-direction:column; align-items:stretch; }
   .cform__input{ max-width:none; width:100%; height:45px; }
-  .cform__btn{ width:100%; height:45px; }
-  .cform__agree{ align-items:flex-start; text-align:left; }
+  .cform__btn{ width:100%; height:50px; }
+  .cform__agree{ order:-1; margin:0 0 16px; align-items:flex-start; text-align:left; }
   .footer__inner{ flex-direction:column; align-items:flex-start; }
 }
