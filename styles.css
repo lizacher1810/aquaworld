@@ -648,8 +648,8 @@ a{ color:inherit; text-decoration:none; }
   .formsec{ padding:56px var(--pad); }
   .cform{ display:flex; flex-direction:column; }
   .cform__row{ flex-direction:column; align-items:stretch; }
-  .cform__input{ max-width:none; width:100%; height:45px; }
-  .cform__btn{ width:100%; height:50px; }
+  .cform__input{ flex:none; max-width:none; width:100%; height:45px; }
+  .cform__btn{ flex:none; width:100%; height:50px; }
   .cform__agree{ order:-1; margin:0 0 16px; align-items:flex-start; text-align:left; }
   .footer__inner{ flex-direction:column; align-items:flex-start; }
 }
