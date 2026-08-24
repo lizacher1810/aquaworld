@@ -24,24 +24,23 @@ a{ color:inherit; text-decoration:none; }
 /* ---------- Preloader ---------- */
 .preloader{
   position:fixed; inset:0; z-index:100;
-  background:#05070a;
+  background:#0D253C;
   display:flex; align-items:center; justify-content:center;
   transition:opacity .6s var(--ease), visibility .6s var(--ease);
 }
 .preloader.hidden{ opacity:0; visibility:hidden; }
 .preloader__inner{ width:min(280px,70vw); text-align:center; }
 .preloader__label{
-  font-weight:700; font-size:26px; letter-spacing:.04em; margin-bottom:18px;
+  font-weight:700; font-size:26px; letter-spacing:.04em; margin-bottom:22px;
 }
-.preloader__bar{
-  height:2px; width:100%; background:rgba(255,255,255,.15); border-radius:2px; overflow:hidden;
+.preloader__drop{
+  display:block; width:84px; height:auto; margin:0 auto 14px;
 }
-.preloader__bar span{
-  display:block; height:100%; width:0%; background:var(--white);
-  transition:width .2s linear;
+.preloader__drop #preloaderFill{
+  transition:y .2s linear, height .2s linear;
 }
 .preloader__pct{
-  margin-top:12px; font-size:13px; opacity:.6; letter-spacing:.05em;
+  font-size:15px; font-weight:500; opacity:.85; letter-spacing:.05em;
 }
 
 /* ---------- Header ---------- */

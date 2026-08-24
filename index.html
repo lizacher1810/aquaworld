@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aquaworld — аквариум под ключ</title>
   <meta name="description" content="Aquaworld — аквариум под ключ: от идеи и дизайна до живой экосистемы, которая работает сама." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%90%A0%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="styles.css?v=11" />
   <script type="module" src="assets/model-viewer.min.js"></script>
 </head>
 <body>
@@ -19,7 +20,17 @@
   <div class="preloader" id="preloader">
     <div class="preloader__inner">
       <div class="preloader__label">Aquaworld</div>
-      <div class="preloader__bar"><span id="preloaderFill"></span></div>
+      <svg class="preloader__drop" viewBox="0 0 100 130" aria-hidden="true">
+        <defs>
+          <clipPath id="dropClip">
+            <path d="M50 8 C50 8 88 60 88 82 A38 38 0 1 1 12 82 C12 60 50 8 50 8 Z"/>
+          </clipPath>
+        </defs>
+        <rect id="preloaderFill" x="0" y="120" width="100" height="0" fill="#4db6e6" clip-path="url(#dropClip)"/>
+        <path class="preloader__drop-line"
+              d="M50 8 C50 8 88 60 88 82 A38 38 0 1 1 12 82 C12 60 50 8 50 8 Z"
+              fill="none" stroke="rgba(255,255,255,.85)" stroke-width="3"/>
+      </svg>
       <div class="preloader__pct" id="preloaderPct">0%</div>
     </div>
   </div>
@@ -293,6 +304,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=10"></script>
+  <script src="script.js?v=11"></script>
 </body>
 </html>

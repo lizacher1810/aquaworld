@@ -69,7 +69,10 @@
 
   function updatePreloader() {
     const pct = Math.round((loadedCount / FRAME_COUNT) * 100);
-    preFill.style.width = pct + '%';
+    // fill the droplet from the bottom up (rect grows upward inside the drop clip)
+    const h = (pct / 100) * 115;
+    preFill.setAttribute('y', (120 - h).toFixed(1));
+    preFill.setAttribute('height', h.toFixed(1));
     prePct.textContent = pct + '%';
     if (!ready && loadedCount >= Math.min(READY_AT, FRAME_COUNT)) {
       ready = true;
