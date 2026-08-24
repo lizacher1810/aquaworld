@@ -272,18 +272,15 @@
     walk(document.body);
   })();
 
-  // ---------- Contact form → Telegram ----------
+  // ---------- Contact form → Telegram (via Cloudflare Worker) ----------
   (function contactForm() {
-    const TG_TOKEN = '8668001294:AAHPQrAAiSYQg3CpzC4x2BE6u78V_yCqPwY';
-    const TG_CHAT  = '771843490';   // ← сюда впишется chat_id
+    // Worker keeps the bot token server-side; the site only calls this URL
+    const ENDPOINT = 'https://aquaworld-form.liza-medvedeva1810.workers.dev';
 
     const form = document.getElementById('cform');
     if (!form) return;
     const status = document.getElementById('cformStatus');
     const btn = form.querySelector('.cform__btn');
-
-    const esc = (s) => String(s || '').replace(/[<>&]/g,
-      (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -301,26 +298,21 @@
       }
 
       const data = new FormData(form);
-      const text =
-        '🐠 <b>Новая заявка — Aquaworld</b>\n\n' +
-        '👤 Имя: ' + esc(data.get('name')) + '\n' +
-        '📞 Телефон: ' + esc(data.get('phone')) + '\n' +
-        '✉️ Почта: ' + esc(data.get('email'));
 
       btn.disabled = true;
       const orig = btn.textContent;
       btn.textContent = 'Отправляем…';
       try {
-        // form-encoded body avoids a CORS preflight (Safari fails the OPTIONS otherwise)
-        const params = new URLSearchParams();
-        params.append('chat_id', TG_CHAT);
-        params.append('text', text);
-        params.append('parse_mode', 'HTML');
         const controller = new AbortController();
         const timer = setTimeout(() => controller.abort(), 12000);
-        const res = await fetch('https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage', {
+        const res = await fetch(ENDPOINT, {
           method: 'POST',
-          body: params,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: data.get('name'),
+            phone: data.get('phone'),
+            email: data.get('email')
+          }),
           signal: controller.signal
         });
         clearTimeout(timer);
